@@ -21,7 +21,7 @@ public class searchAlgos {
         root.right.right.left = new TreeNode(14);
         root.right.right.right = new TreeNode(15);
 
-        System.out.println(getNumberOfNodes(root));
+        System.out.println(maxDepthOfTree(root));
 
     }
 
@@ -105,6 +105,15 @@ public class searchAlgos {
     public static int getNumberOfNodes(TreeNode node) {
         if (node != null) return 1 + getNumberOfNodes(node.getLeftNode()) + getNumberOfNodes(node.getRightNode());
         else return 0;
+    }
+
+    // find the maximum depth of a tree
+    public static int maxDepthOfTree(TreeNode node) {
+
+      if (node == null) return 0;
+      else {
+        return 1 + Math.max(maxDepthOfTree(node.getLeftNode()), maxDepthOfTree(node.getRightNode()));
+      }
     }
 
 }
