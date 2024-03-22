@@ -1,7 +1,7 @@
-import java.util.Stack;
 import java.util.ArrayList;
+import java.util.Stack;
 
-public class DFS_Java {
+public class searchAlgos {
     
     public static void main(String[] args) {
 
@@ -21,7 +21,7 @@ public class DFS_Java {
         root.right.right.left = new TreeNode(14);
         root.right.right.right = new TreeNode(15);
 
-        simpleDFS(root);
+        System.out.println(getNumberOfNodes(root));
 
     }
 
@@ -99,6 +99,12 @@ public class DFS_Java {
             System.out.println(node.getVal());
         }
 
+    }
+
+    // find the number of nodes in a tree. Using pre order traversal
+    public static int getNumberOfNodes(TreeNode node) {
+        if (node != null) return 1 + getNumberOfNodes(node.getLeftNode()) + getNumberOfNodes(node.getRightNode());
+        else return 0;
     }
 
 }
