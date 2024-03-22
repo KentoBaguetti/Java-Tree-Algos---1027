@@ -116,4 +116,13 @@ public class searchAlgos {
       }
     }
 
+    public static int minDepthOfTree(TreeNode node) {
+
+        if (node != null) return 0;
+        else if (node.left == null) return 1 + minDepthOfTree(node.getRightNode());
+        else if (node.right == null) return 1 + minDepthOfTree(node.getLeftNode());
+        else return 1 + Math.min(minDepthOfTree(node.getLeftNode()), minDepthOfTree(node.getRightNode()));
+
+    }
+
 }
