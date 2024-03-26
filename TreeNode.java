@@ -21,4 +21,8 @@ public class TreeNode {
         return this.val;
     }
 
+    public String toString() {
+        return "Node Value: " + this.getVal();
+    }
+
 }

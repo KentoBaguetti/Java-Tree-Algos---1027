@@ -21,7 +21,7 @@ public class searchAlgos {
         root.right.right.left = new TreeNode(14);
         root.right.right.right = new TreeNode(15);
 
-        System.out.println(maxDepthOfTree(root));
+        System.out.println(findNode(11, root));
 
     }
 
@@ -123,6 +123,18 @@ public class searchAlgos {
         else if (node.right == null) return 1 + minDepthOfTree(node.getLeftNode());
         else return 1 + Math.min(minDepthOfTree(node.getLeftNode()), minDepthOfTree(node.getRightNode()));
 
+    }
+
+    public static TreeNode findNode(int targetValue, TreeNode node) {
+        if (node == null) return null;
+        if (node.getVal() == targetValue) return node;
+        
+        // search the left sub tree
+        TreeNode temp = findNode(targetValue, node.getLeftNode());
+        if (temp != null) return temp;
+        
+        // search the right sub tree since the left side has been searched
+        else return findNode(targetValue, node.getRightNode());
     }
 
 }
