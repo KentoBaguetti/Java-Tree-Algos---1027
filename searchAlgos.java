@@ -137,4 +137,21 @@ public class searchAlgos {
         else return findNode(targetValue, node.getRightNode());
     }
 
+    public static TreeNode invertBinaryTree(TreeNode node) {
+        
+        if (node == null) return node;
+        else if (node.getLeftNode() == null && node.getRightNode() == null) return node;
+        else {
+            invertBinaryTree(node.getLeftNode());
+            invertBinaryTree(node.getRightNode());
+
+            TreeNode temp = node.getLeftNode();
+            node.left = node.getRightNode();
+            node.right = temp;
+
+            return node;
+        }
+
+    }
+
 }
