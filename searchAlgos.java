@@ -21,7 +21,7 @@ public class searchAlgos {
         root.right.right.left = new TreeNode(14);
         root.right.right.right = new TreeNode(15);
 
-        System.out.println(findNode(11, root));
+        System.out.println(minValue(root));
 
     }
 
@@ -137,6 +137,7 @@ public class searchAlgos {
         else return findNode(targetValue, node.getRightNode());
     }
 
+    
     public static TreeNode invertBinaryTree(TreeNode node) {
         
         if (node == null) return node;
@@ -152,6 +153,15 @@ public class searchAlgos {
             return node;
         }
 
+    }
+
+    public static int minValue(TreeNode node) {
+        if (node == null) return 999999;
+        else {
+            int val = node.val;
+            int temp = Math.min(minValue(node.left), minValue(node.right));
+            return Math.min(temp, val);
+        }
     }
 
 }
