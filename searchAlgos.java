@@ -21,7 +21,7 @@ public class searchAlgos {
         root.right.right.left = new TreeNode(14);
         root.right.right.right = new TreeNode(15);
 
-        System.out.println(minValue(root));
+        System.out.println(numOfLeafNodes(root));
 
     }
 
@@ -155,12 +155,22 @@ public class searchAlgos {
 
     }
 
+    // returns the minimum value in the tree
     public static int minValue(TreeNode node) {
         if (node == null) return 999999;
         else {
             int val = node.val;
             int temp = Math.min(minValue(node.left), minValue(node.right));
             return Math.min(temp, val);
+        }
+    }
+    
+    // returms the number of leaf nodes in a tree
+    public static int numOfLeafNodes(TreeNode node) {
+        if (node == null) return 0;
+        else if (node.right == null & node.left == null) return 1;
+        else {
+            return numOfLeafNodes(node.left) + numOfLeafNodes(node.right);
         }
     }
 
