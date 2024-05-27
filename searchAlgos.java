@@ -47,6 +47,25 @@ public class searchAlgos {
 
     }
 
+    public static void iterativeDfs(TreeNode node) {
+
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+
+        stack.push(node);
+
+        while (!stack.isEmpty()) {
+
+            TreeNode curr = stack.pop();
+
+            if (curr.getRightNode() != null) stack.push(curr.getRightNode());
+            if (curr.getLeftNode() != null) stack.push(curr.getLeftNode());
+
+            System.out.println(curr.getVal());
+
+        }
+
+    }
+
     public static void simpleBFS(TreeNode node) {
 
         ArrayList<TreeNode> queue = new ArrayList<TreeNode>();
@@ -107,6 +126,13 @@ public class searchAlgos {
         else return 0;
     }
 
+    public static int numberOfNodes(TreeNode root) {
+
+        if (root != null) return 1 + numberOfNodes(root.getLeftNode()) + numberOfNodes(root.getLeftNode());
+        else return 0;
+
+    }
+
     // find the maximum depth of a tree
     public static int maxDepthOfTree(TreeNode node) {
 
@@ -114,6 +140,15 @@ public class searchAlgos {
       else {
         return 1 + Math.max(maxDepthOfTree(node.getLeftNode()), maxDepthOfTree(node.getRightNode()));
       }
+    }
+
+    public static int maxDepth(TreeNode node) {
+
+        if (node == null) return 0;
+        else {
+            return 1 + Math.max(maxDepth(node.getLeftNode()), maxDepth(node.getRightNode()));
+        } 
+
     }
 
     public static int minDepthOfTree(TreeNode node) {
@@ -166,9 +201,17 @@ public class searchAlgos {
     }
     
     // returms the number of leaf nodes in a tree
+    // public static int numOfLeafNodes(TreeNode node) {
+    //     if (node == null) return 0;
+    //     else if (node.right == null & node.left == null) return 1;
+    //     else {
+    //         return numOfLeafNodes(node.left) + numOfLeafNodes(node.right);
+    //     }
+    // }
+
     public static int numOfLeafNodes(TreeNode node) {
         if (node == null) return 0;
-        else if (node.right == null & node.left == null) return 1;
+        else if (node.right == null && node.left == null) return 1;
         else {
             return numOfLeafNodes(node.left) + numOfLeafNodes(node.right);
         }
